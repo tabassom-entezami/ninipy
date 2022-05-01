@@ -22,6 +22,7 @@ class BaseProduct(models.Model):
     price = models.IntegerField(validators=[MinValueValidator(1000)])
     numbers = models.IntegerField(validators=[MinValueValidator(0)])
     create_date = models.TimeField(auto_now_add=True)
+    # protect bc I think we can not have a product without brand or category
     brand = models.ForeignKey('Brand', on_delete=models.PROTECT, related_name='product_brand')
     category = models.ForeignKey('Category', on_delete=models.PROTECT, related_name='product_category')
 
